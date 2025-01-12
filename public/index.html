@@ -3,126 +3,196 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gem AI</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Genesis AI</title>
     <style>
-        body {
-            font-family: 'Open Sans', sans-serif;
-            background: linear-gradient(135deg, #2980B9, #6DD5FA);
-            color: #fff;
-            overflow-x: hidden;
+        /* General Reset */
+        * {
             margin: 0;
-        }
-        .container {
-            background-color: rgba(0, 0, 0, 0.85);
-            border-radius: 15px;
-            padding: 40px 60px;
-            max-width: 1200px;
-            margin: 50px auto;
-            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        .headline {
-            font-size: 3.5em;
-            margin-bottom: 20px;
-            font-weight: 700;
-            text-align: center;
-        }
-        .subheadline {
-            font-size: 1.8em;
-            margin-bottom: 30px;
-            font-style: italic;
-            text-align: center;
-        }
-        .description {
-            font-size: 1.2em;
-            line-height: 1.6;
-            margin-bottom: 40px;
-            text-align: center;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #141e30, #243b55);
+            color: white;
+            overflow-x: hidden;
         }
 
-        .features {
+        /* Header Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 50px;
             display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            margin-bottom: 30px;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(20, 20, 20, 0.95);
+            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.8);
+            z-index: 1000;
         }
-        .feature {
+
+        header h1 {
+            font-size: 30px;
+            font-weight: bold;
+            background: linear-gradient(90deg, #00dbde, #fc00ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        nav {
+            display: flex;
+        }
+
+        nav a {
+            margin-left: 30px;
+            text-decoration: none;
+            font-size: 18px;
+            color: white;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #00dbde;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             text-align: center;
+            background: linear-gradient(120deg, #ff0080, #1e90ff);
+            background-size: 200% 200%;
+            animation: gradient-animation 8s infinite;
+        }
+
+        .hero h1 {
+            font-size: 60px;
+            margin-bottom: 20px;
+            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero p {
+            font-size: 20px;
+            max-width: 800px;
+            margin-bottom: 40px;
+            line-height: 1.5;
+        }
+
+        .hero button {
+            padding: 15px 40px;
+            font-size: 18px;
+            color: white;
+            background: linear-gradient(90deg, #00c9ff, #92fe9d);
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .hero button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Info Section */
+        .info-section {
+            padding: 80px 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .info-card {
+            background: rgba(255, 255, 255, 0.1);
             padding: 20px;
             border-radius: 10px;
-            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
-            margin: 10px;
-            width: calc(30% - 20px);
-            transition: transform 0.3s ease;
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        .feature:hover {
-            transform: translateY(-5px);
-            box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.5);
+
+        .info-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.5);
         }
-        .feature-icon {
-            font-size: 3em;
+
+        .info-card h3 {
+            font-size: 24px;
             margin-bottom: 10px;
-            color: #007BFF;
+            background: linear-gradient(90deg, #ff8c00, #ff2e63);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
-        .gem-image {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            margin: 20px auto;
-            animation: spin 6s linear infinite;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+
+        .info-card p {
+            font-size: 16px;
+            line-height: 1.6;
         }
-        .button {
-            display: inline-block;
-            padding: 15px 30px;
-            background-color: #007BFF;
-            color: #fff;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: bold;
+
+        /* Footer */
+        footer {
             text-align: center;
-            margin: 20px auto;
-            transition: background-color 0.3s ease;
+            padding: 20px 0;
+            background: #111;
+            color: white;
         }
-        .button:hover {
-            background-color: #0056b3;
+
+        /* Animations */
+        @keyframes gradient-animation {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container animate__animated animate__fadeInDown">
-        <img class="gem-image animate__animated animate__fadeIn" src="gem_ai_logo.png" alt="Gem AI Logo">
+    <!-- Header -->
+    <header>
+        <h1>Genesis AI</h1>
+        <nav>
+            <a href="chat.html">Try Now</a>
+            <a href="status.html">Status</a>
+            <a href="#features">Features</a>
+        </nav>
+    </header>
 
-        <h1 class="headline animate__animated animate__fadeInUp">Introducing Gem AI</h1>
-        <h3 class="subheadline animate__animated animate__fadeInUp">Your Next Generation AI Assistant</h3>
-        <div class="description animate__animated animate__fadeInUp">
-            Gem AI is a cutting-edge AI assistant from Gem Intelligence, designed to empower your workflow. We utilize advanced algorithms and vast datasets to provide accurate, comprehensive, and efficient solutions to a wide array of tasks. Experience the future of intelligent assistance!
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Welcome to Genesis AI</h1>
+        <p>The most advanced AI platform, providing cutting-edge solutions with strict safety guidelines and unmatched performance.</p>
+        <button onclick="window.location.href='chat.html'">Try It Now</button>
+    </section>
+
+    <!-- Info Section -->
+    <section id="features" class="info-section">
+        <div class="info-card">
+            <h3>Real-Time Updates</h3>
+            <p>Genesis AI stays up-to-date with the latest knowledge from 2024 and beyond. You’ll always have the most relevant information.</p>
         </div>
-
-        <div class="features">
-            <div class="feature animate__animated animate__fadeInUp">
-                <i class="fas fa-lightbulb feature-icon"></i>
-                <h3>Innovation</h3>
-                <p>We constantly push the boundaries of what's possible in AI.</p>
-            </div>
-            <div class="feature animate__animated animate__fadeInUp">
-                <i class="fas fa-cogs feature-icon"></i>
-                <h3>Efficiency</h3>
-                <p>Streamline your processes and achieve more in less time.</p>
-            </div>
-            <div class="feature animate__animated animate__fadeInUp">
-                <i class="fas fa-robot feature-icon"></i>
-                <h3>Intelligence</h3>
-                <p>Experience unparalleled AI capabilities tailored to your needs.</p>
-            </div>
+        <div class="info-card">
+            <h3>Strict Guidelines</h3>
+            <p>Our AI is designed with safety in mind. It adheres to strict ethical guidelines to ensure a secure and trustworthy experience for everyone.</p>
         </div>
+        <div class="info-card">
+            <h3>Advanced Assistance</h3>
+            <p>Whether you're coding, studying, or just exploring, Genesis AI delivers unmatched performance with precision and speed.</p>
+        </div>
+    </section>
 
-        <a href="chat.html" class="button animate__animated animate__fadeInUp">TRY IT NOW</a>
-    </div>
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Genesis AI. All rights reserved.</p>
+    </footer>
 </body>
 </html>
